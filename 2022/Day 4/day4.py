@@ -38,8 +38,8 @@ def overlap_count(puzzle_input):
     return overlap_count
 
 
-print(f"There are {fully_contained_count('input.txt')} assignment pairs where one range fully contains the other.")
+print(f"There are {fully_contained_count('input.txt')} assignment pairs where one range fully contains the other")
 # There are 513 assignment pairs where one range fully contains the other.
 
-print(overlap_count('input.txt'))
+print(f"There are {overlap_count('input.txt')} assignment pairs that contain overlap")
 # There are 878 assignment pairs that contain overlap
