@@ -79,8 +79,8 @@ def max_score(puzzle_input):
     return max(trees(puzzle_input)[1])
 
 
-print(f"There are {amount_visible('input.txt')} trees visible from outside the grid.")
-# There are 1779 trees visible from outside the grid.
+print(f"There are {amount_visible('input.txt')} trees visible from outside the grid")
+# There are 1779 trees visible from outside the grid
 
 print(f"The highest score of any tree is: {max_score('input.txt')}")
 # The highest score of any tree is: 172224
