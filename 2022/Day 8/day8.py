@@ -7,8 +7,7 @@ def get_input(puzzle_input):
 def make_columns(puzzle_input):
     rows = get_input(puzzle_input)
     columns = []
-    for char in rows[0]:
-        columns.append('')
+    [columns.append('') for _ in rows[0]]
     for row in rows:
         for char_index, char in enumerate(row):
             columns[char_index] += char
@@ -16,10 +15,8 @@ def make_columns(puzzle_input):
 
 
 def trees(puzzle_input):
-    rows = get_input(puzzle_input)
-    columns = make_columns(puzzle_input)
-    visible = 0
-    scores = []
+    rows, columns = get_input(puzzle_input), make_columns(puzzle_input)
+    visible, scores = 0, []
     for r_index, row in enumerate(rows):
         for c_index, char in enumerate(row):
             above = columns[c_index][:r_index][::-1]
