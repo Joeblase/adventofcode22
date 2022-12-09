@@ -1,9 +1,3 @@
-def get_input(puzzle_input):
-    with open(puzzle_input) as input_file:
-        input_list = input_file.read().splitlines()
-    return input_list
-
-
 def move_head(direction, head_pos):
     if direction == 'U':
         head_pos[1] += 1
@@ -51,7 +45,8 @@ def move_tail(leading_knot, tail_pos):
 
 
 def simulate_movement(puzzle_input, knots):
-    instructions = get_input(puzzle_input)
+    with open(puzzle_input) as input_file:
+        instructions = input_file.read().splitlines()
     head_pos, tail_positions = [0, 0], []
     [tail_positions.append([0, 0]) for _ in range(knots - 1)]
     previous_end_locations = []
