@@ -6,13 +6,6 @@ with open('input.txt') as input_file:
     input_ = input_file.read().splitlines()
 
 
-def largest_non_number_factor(number):
-    for num in range(1, floor(number/2) + 1):
-        if number % num == 0:
-            output = num
-    return output
-
-
 class Monkey:
     def __init__(self, starting_items, operation, test, if_true, if_false):
         self.items = starting_items
