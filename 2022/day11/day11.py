@@ -1,6 +1,7 @@
 # https://adventofcode.com/2022/day/11
+
 # I had to look up how to do part two.
-# Multiply the test divisors for each monkey together, item % that number each inspection
+# Multiply the test divisors for each monkey together, item %= that number each inspection
 
 from math import floor, prod
 
