@@ -33,20 +33,20 @@ if not os.path.exists(path):
 if not os.path.exists(f'{path}/input.txt'):
     with open(f'{path}/input.txt', 'w') as _:
         pass
-    print(f"Created '{path}/input.txt'")
+    print(f"Created blank '{path}/input.txt'")
 
 if not os.path.exists(f'{path}/{day_name}.py'):
     with open(f'{path}/{day_name}.py', 'w') as f:
         f.write(
             f"# https://adventofcode.com/{year}/day/{day}\n"
-            f"\n"
-            f"with open('input.txt') as input_file:\n"
-            f"    input_ = input_file.read()\n"
-            f"\n\n\n"
-            f"print(f'Part 1: ')\n"
-            f"# \n"
-            f"\n"
-            f"print(f'Part 2: ')\n"
-            f"# \n"
+            "\n"
+            "with open('input.txt') as input_file:\n"
+            "    input_ = input_file.read()\n"
+            "\n\n\n"
+            "print(f\"Part 1: \")\n"
+            "# \n"
+            "\n"
+            "print(f\"Part 2: \")\n"
+            "# \n"
         )
-    print(f"Created '{path}/{day_name}.py'")
+    print(f"Created template '{path}/{day_name}.py'")
