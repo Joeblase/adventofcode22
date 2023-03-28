@@ -2,6 +2,14 @@ import os
 import datetime
 import argparse
 import webbrowser
+import json
+
+try:
+    import requests
+except ImportError:
+    import subprocess
+    subprocess.check_call(['python', '-m', 'pip', 'install', 'requests'])
+    import requests
 
 
 def create_template(year, day, now):
@@ -12,10 +20,19 @@ def create_template(year, day, now):
     if not os.path.exists(path):
         os.makedirs(path)
 
+    with open("session_cookie.json") as f:
+        json_f = json.load(f)
+        session_cookie = json_f["SESSION_COOKIE"]
+
     if not os.path.exists(f'{path}/input.txt'):
-        with open(f'{path}/input.txt', 'w') as _:
-            pass
-        print(f"Created blank '{path}/input.txt'")
+        response = requests.get(f"{link}/input", cookies={'session': session_cookie})
+        input_data = ''
+        print(response.status_code)
+        if response.status_code == 200:
+            input_data = response.content.decode()
+            print('Received input data')
+        with open(f'{path}/input.txt', 'w') as f:
+            f.write(input_data)
 
     if not os.path.exists(f'{path}/{day_name}.py'):
         with open(f'{path}/{day_name}.py', 'w') as f:
@@ -23,12 +40,9 @@ def create_template(year, day, now):
 # Created on {months[now.month]} {now.day} {now.year}
 # {link}
 
-try:
-    input_file = open('input.txt', 'r')
-except FileNotFoundError:
-    input_file = open('{year}/{day_name}/input.txt', 'r')
-input_ = input_file.read()
-input_file.close()
+with open('input.txt') as input_file:
+   input_ = input_file.read()
+
 
 
 print(f"Part 1: ")
