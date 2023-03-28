@@ -28,7 +28,7 @@ def create_template(year, day, now):
         response = requests.get(f"{link}/input", cookies={'session': session_cookie})
         input_data = ''
         print(response.status_code)
-        if response.status_code == 200:
+        if response.ok:
             input_data = response.content.decode()
             print('Received input data')
         with open(f'{path}/input.txt', 'w') as f:
@@ -55,7 +55,7 @@ print(f"Part 2: ")
     webbrowser.open(link)
 
 
-def main():
+def aoc():
     parser = argparse.ArgumentParser()
     parser.add_argument("--year", type=int,
                         help="The year of the Advent of Code")
@@ -95,4 +95,4 @@ months = {
 }
 
 if __name__ == "__main__":
-    main()
+    aoc()
