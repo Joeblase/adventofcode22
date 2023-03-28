@@ -25,7 +25,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-
 # pycharm
 .idea
 venv
@@ -37,4 +36,4 @@ venv
 .venv
 
 #project
-# session_cookie.json
+session_cookie.json
