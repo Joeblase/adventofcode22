@@ -30,3 +30,6 @@ Temporary Items
 # pycharm
 .idea
 venv
+
+#vscode
+.vscode
