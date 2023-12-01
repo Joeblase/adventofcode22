@@ -1,14 +1,6 @@
 import re
 import json
-import os
-
-
-try:
-    import requests
-except ImportError:
-    import subprocess
-    subprocess.check_call(['python', '-m', 'pip', 'install', 'requests'])
-    import requests
+import requests
 
 
 def get_events():
@@ -50,18 +42,27 @@ def create_shields(events):
         color_hex = f"{color_r:02x}{color_g:02x}{color_b:02x}"
 
         shields.append(f"[![{year}](https://img.shields.io/badge/{year}-{stars}★-{color_hex}?style=flat-square)](https://adventofcode.com/{year})")
-    return '\n'.join(shields)
+    return ' '.join(shields)
 
-def update_readme():
+def main():
     events = get_events()
     shields  = create_shields(events)
-    readme = f"""\
-# Advent of Code
-{shields}
-"""
-    with open('README.md', 'w') as f:
-        f.write(readme)
-
+    with open('README.md', 'r', encoding='utf-8') as file:
+        readme = file.readlines()
+        
+    start_index = None
+    end_index = None
+    for i, line in enumerate(readme):
+        if "<!-- SHIELDS_START -->" in line:
+            start_index = i
+        if "<!-- SHIELDS_END -->" in line:
+            end_index = i
+            
+    if (start_index != None) and (end_index != None):
+        readme[start_index+1:end_index] = shields + "\n"
+    
+    with open('README.md', 'w', encoding='utf-8') as f:
+        f.writelines(readme)
 
 if __name__ == "__main__":
-    update_readme()
+    main()

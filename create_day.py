@@ -15,37 +15,42 @@ def create_template(year, day, now):
     if not os.path.exists(path):
         os.makedirs(path)
 
-    with open("session_cookie.json") as f:
+    with open("session_cookie.json", encoding='UTF-8') as f:
         json_f = json.load(f)
         session_cookie = json_f["SESSION_COOKIE"]
 
     if not os.path.exists(f'{path}/input.txt'):
-        response = requests.get(f"{link}/input", cookies={'session': session_cookie})
+        response = requests.get(f"{link}/input", cookies={'session': session_cookie}, timeout=20)
         input_data = ''
         print(response.status_code)
         if response.ok:
             input_data = response.content.decode()
             print('Received input data')
-        with open(f'{path}/input.txt', 'w') as f:
+        with open(f'{path}/input.txt', 'w', encoding='UTF-8') as f:
             f.write(input_data)
 
     if not os.path.exists(f'{path}/{day_name}.py'):
-        with open(f'{path}/{day_name}.py', 'w') as f:
+        with open(f'{path}/{day_name}.py', 'w', encoding='UTF-8') as f:
             f.write(f"""\
 # Created on {months[now.month]} {now.day} {now.year}
 # Python {sys.version.split(" ")[0]}
 # {link}
 
-with open('input.txt') as input_file:
-   input_ = input_file.read()
+def main():
+    with open('input.txt', encoding='UTF-8') as input_file:
+       input_string = input_file.read()
+    
+    
+    
+    print(f"Part 1: ")
+    # Part 2: 
+    
+    print(f"Part 2: ")
+    # Part 2: 
+    
+if __name__ == "__main__":
+    main()
 
-
-
-print(f"Part 1: ")
-# 
-
-print(f"Part 2: ")
-# 
 """)
         print(f"Created template '{path}/{day_name}.py'")
     webbrowser.open(link)
