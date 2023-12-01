@@ -36,6 +36,8 @@ def create_template(year, day, now):
 # Python {sys.version.split(" ")[0]}
 # {link}
 
+import time
+
 def main():
     with open('input.txt', encoding='UTF-8') as input_file:
        input_string = input_file.read()
@@ -49,7 +51,10 @@ def main():
     # Part 2: 
     
 if __name__ == "__main__":
+    start_time = time.perf_counter()
     main()
+    end_time = time.perf_counter()
+    print(f"Execution time: {{round(end_time - start_time, 6)}} seconds")
 
 """)
         print(f"Created template '{path}/{day_name}.py'")
