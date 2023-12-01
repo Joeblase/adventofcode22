@@ -1,15 +1,10 @@
 import os
+import sys
 import datetime
 import argparse
 import webbrowser
 import json
-
-try:
-    import requests
-except ImportError:
-    import subprocess
-    subprocess.check_call(['python', '-m', 'pip', 'install', 'requests'])
-    import requests
+import requests
 
 
 def create_template(year, day, now):
@@ -38,6 +33,7 @@ def create_template(year, day, now):
         with open(f'{path}/{day_name}.py', 'w') as f:
             f.write(f"""\
 # Created on {months[now.month]} {now.day} {now.year}
+# Python {sys.version.split(" ")[0]}
 # {link}
 
 with open('input.txt') as input_file:
@@ -55,7 +51,7 @@ print(f"Part 2: ")
     webbrowser.open(link)
 
 
-def aoc():
+def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--year", type=int,
                         help="The year of the Advent of Code")
@@ -95,4 +91,4 @@ months = {
 }
 
 if __name__ == "__main__":
-    aoc()
+    main()
