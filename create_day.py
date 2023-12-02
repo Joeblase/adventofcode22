@@ -38,18 +38,18 @@ def create_template(year, day, now):
 
 import time
 
+
 def main():
     with open('input.txt', encoding='UTF-8') as input_file:
-       input_string = input_file.read()
-    
-    
-    
+        input_string = input_file.read()
+
     print(f"Part 1: ")
-    # Part 2: 
-    
+    # Part 1: 
+
     print(f"Part 2: ")
     # Part 2: 
-    
+
+
 if __name__ == "__main__":
     start_time = time.perf_counter()
     main()
