@@ -22,7 +22,7 @@ def create_template(year, day, now):
     if not os.path.exists(f'{path}/input.txt'):
         response = requests.get(f"{link}/input", cookies={'session': session_cookie}, timeout=20)
         input_data = ''
-        print(response.status_code)
+        print(f"Response: {response.status_code}")
         if response.ok:
             input_data = response.content.decode()
             print('Received input data')
@@ -55,7 +55,6 @@ if __name__ == "__main__":
     main()
     end_time = time.perf_counter()
     print(f"Execution time: {{round(end_time - start_time, 6)}} seconds")
-
 """)
         print(f"Created template '{path}/{day_name}.py'")
     webbrowser.open(link)
