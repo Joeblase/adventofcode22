@@ -77,7 +77,6 @@ def main():
 
 
 def get_adjacent(string: str, row: int, col: int, input_bounds: tuple) -> list:
-
     # find all adjacent locations
     str_len = len(string)
     locations = [(row, col - 1), (row, col + str_len)]
