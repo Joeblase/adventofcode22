@@ -3,13 +3,14 @@
 # https://adventofcode.com/2023/day/4
 
 import time
+from functools import lru_cache
 
 
 def main():
     with open('input.txt', encoding='UTF-8') as input_file:
         input_string = input_file.read()
 
-    input_lines = input_string.splitlines()
+    input_lines = tuple(input_string.splitlines())
     num_original_cards = len(input_lines)
 
     # Part 1
@@ -31,7 +32,8 @@ def main():
     # Part 2: 6050769
 
 
-def get_matches(card_num: int, input_lines: list) -> int:
+@lru_cache()
+def get_matches(card_num: int, input_lines: tuple) -> int:
     numbers = input_lines[card_num - 1].split(":")[1].split("|")
     my_numbers = numbers[1].split()
     winning_numbers = numbers[0].split()
@@ -42,7 +44,7 @@ def get_matches(card_num: int, input_lines: list) -> int:
     return matches
 
 
-def process_cards(card_num: int, input_lines: list) -> int:
+def process_cards(card_num: int, input_lines: tuple) -> int:
     matches = get_matches(card_num, input_lines)
     num_cards = 1
     if matches:
