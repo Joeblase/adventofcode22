@@ -20,12 +20,16 @@ def create_template(year, day, now):
         session_cookie = json_f["SESSION_COOKIE"]
 
     if not os.path.exists(f'{path}/input.txt'):
-        response = requests.get(f"{link}/input", cookies={'session': session_cookie}, timeout=20)
         input_data = ''
-        print(f"Response: {response.status_code}")
-        if response.ok:
-            input_data = response.content.decode()
-            print('Received input data')
+        try:
+            response = requests.get(f"{link}/input", cookies={'session': session_cookie}, timeout=10)
+            print(f"Response: {response.status_code}")
+            if response.ok:
+                input_data = response.content.decode()
+                print('Received input data')
+        except Exception as e:
+            print(f"There was an error retrieving input data:\n{e}")
+
         with open(f'{path}/input.txt', 'w', encoding='UTF-8') as f:
             f.write(input_data)
 
