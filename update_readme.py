@@ -14,7 +14,7 @@ def get_events():
         event_list = []
         for line in html_lines:
             if line[:29] == "<div class=\"eventlist-event\">":
-                year = re.search(r'\[(\d{4})\]', line).group(1)
+                year = re.search(r'\[(\d{4})]', line).group(1)
                 stars = re.search(r"(\d+)\*", line)
                 if stars:
                     stars = stars.group(1)
@@ -32,7 +32,7 @@ def create_shields(events):
         year = event[0]
         stars = event[1]
 
-        completion = int(stars)/50
+        completion = int(stars) / 50
 
         color_start = (211, 211, 211)
         color_end = (230, 203, 0)
@@ -41,28 +41,35 @@ def create_shields(events):
         color_b = int(color_start[2] + (color_end[2] - color_start[2]) * completion)
         color_hex = f"{color_r:02x}{color_g:02x}{color_b:02x}"
 
-        shields.append(f"[![{year}](https://img.shields.io/badge/{year}-{stars}★-{color_hex}?style=flat-square)](https://adventofcode.com/{year})")
+        shields.append(
+            f"[![{year}](https://img.shields.io/badge/{year}-{stars}★-{color_hex}?style=flat-square)](https://adventofcode.com/{year})")
     return ' '.join(shields)
+
 
 def main():
     events = get_events()
-    shields  = create_shields(events)
+    shields = create_shields(events)
     with open('README.md', 'r', encoding='utf-8') as file:
         readme = file.readlines()
-        
+
     start_index = None
     end_index = None
     for i, line in enumerate(readme):
         if "<!-- SHIELDS_START -->" in line:
             start_index = i
+            if end_index is not None:
+                break
         if "<!-- SHIELDS_END -->" in line:
             end_index = i
-            
-    if (start_index != None) and (end_index != None):
-        readme[start_index+1:end_index] = shields + "\n"
-    
+            if start_index is not None:
+                break
+
+    if (start_index is not None) and (end_index is not None):
+        readme[start_index + 1:end_index] = shields + "\n"
+
     with open('README.md', 'w', encoding='utf-8') as f:
         f.writelines(readme)
+
 
 if __name__ == "__main__":
     main()
