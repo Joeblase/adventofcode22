@@ -14,3 +14,6 @@ Example Usage:\
 
 ### update_readme.py
 Updates the shields above (requires [session cookie](/session_cookie.json)).
+
+### get_all_input_data.py
+Run after cloning repository to get all input data files (requires [session cookie](/session_cookie.json)). 

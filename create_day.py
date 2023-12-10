@@ -27,6 +27,8 @@ def create_template(year, day, now):
             if response.ok:
                 input_data = response.content.decode()
                 print('Received input data')
+            else:
+                raise Exception
         except Exception as e:
             print(f"There was an error retrieving input data:\n{e}")
 
