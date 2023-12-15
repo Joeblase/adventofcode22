@@ -31,27 +31,10 @@ def main():
         cur_direction += 1
         cur_direction %= num_directions
 
-    # Part 2
-    cur_locations = []
-    for location in locations.keys():
-        if location[-1] == "A":
-            cur_locations.append(location)
-
-    cur_direction = 0
-    num_ghost_moves = 0
-    while not at_ghost_end(cur_locations):
-        for i, location in enumerate(cur_locations):
-            direction = directions[cur_direction]
-            cur_locations[i] = travel_location(direction, locations, location)
-        num_ghost_moves += 1
-        cur_direction += 1
-        cur_direction %= num_directions
-        print(f"{cur_locations} {num_ghost_moves}")
-
     print(f"Part 1: {num_moves}")
     # Part 1: 21409
 
-    print(f"Part 2: {num_ghost_moves}")
+    print(f"Part 2: ")
     # Part 2:
 
 
@@ -61,13 +44,6 @@ def travel_location(direction: str, locations: dict, cur_location: str) -> str:
             return locations[cur_location][0]
         case 'R':
             return locations[cur_location][1]
-
-
-def at_ghost_end(cur_locations: list[str]) -> bool:
-    for location in cur_locations:
-        if location[-1] != "Z":
-            return False
-    return True
 
 
 if __name__ == "__main__":
