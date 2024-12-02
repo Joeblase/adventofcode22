@@ -55,7 +55,8 @@ def create_shields(events):
 def main():
     events = get_events()
     shields = create_shields(events)
-    with open("README.md", "r", encoding="utf-8") as file:
+    readme_dir = "docs/README.md"
+    with open(readme_dir, "r", encoding="utf-8") as file:
         readme = file.readlines()
 
     start_index = None
@@ -73,7 +74,7 @@ def main():
     if (start_index is not None) and (end_index is not None):
         readme[start_index + 1 : end_index] = shields + "\n"
 
-    with open("README.md", "w", encoding="utf-8") as f:
+    with open(readme_dir, "w", encoding="utf-8") as f:
         f.writelines(readme)
 
 

@@ -1,4 +1,4 @@
-# Advent of Code
+# <img src="assets/favicon.png" alt="favicon" style="width:24px;"> adventofcode
 My Advent of Code solutions.
 
 ## Stars
@@ -19,6 +19,6 @@ Example Usage:\
 `python create_day.py --year 2023 --day 1`\
 `python create_day.py` (Uses current date and time)
 
-### update_readme.py
+### update_shields.py
 Updates the star shields.
 
