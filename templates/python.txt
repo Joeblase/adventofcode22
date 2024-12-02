@@ -1,0 +1,26 @@
+# {date}
+# Python {python_version}
+
+# Advent of Code {year}
+# Day {day}: {title}
+# {link}
+
+import time
+
+
+def main():
+    with open("input.txt", encoding="UTF-8") as input_file:
+        input = input_file.readlines()
+
+    # Part 1:
+    print(f"Part 1: ")
+
+    # Part 2:
+    print(f"Part 2: ")
+
+
+if __name__ == "__main__":
+    start_time = time.perf_counter() * 1000
+    main()
+    end_time = time.perf_counter() * 1000
+    print(f"Execution time: {{round(end_time - start_time, 3)}} milliseconds")

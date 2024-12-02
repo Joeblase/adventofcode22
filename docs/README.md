@@ -16,7 +16,7 @@ Sets up the repository.
 Creates a directory and files for a specified day and year, fetches the challenge input data, and opens the corresponding webpage.
 
 Example Usage:\
-`python create_day.py --year 2023 --day 1`\
+`python create_day.py --y 2023 --d 1`\
 `python create_day.py` (Uses current date and time)
 
 ### update_shields.py

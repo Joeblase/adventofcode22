@@ -29,7 +29,9 @@ def main():
 
     with open(".env", "w", encoding="UTF-8") as f:
         f.write(
-            f"# The session cookie can be retrieved from the headers of any input data request\nAOC_SESSION_COOKIE={session_cookie}"
+            f"""# The session cookie can be retrieved from the headers of any input data request\n
+            AOC_SESSION_COOKIE={session_cookie}\n
+            AOC_DEFAULT_TEMPLATE=PYTHON"""
         )
 
     years = []
