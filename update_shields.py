@@ -37,18 +37,17 @@ def create_shields(events):
         year = event[0]
         stars = event[1]
 
-        completion = int(stars) / 50
-
-        color_start = (211, 211, 211)
-        color_end = (230, 203, 0)
-        color_r = int(color_start[0] + (color_end[0] - color_start[0]) * completion)
-        color_g = int(color_start[1] + (color_end[1] - color_start[1]) * completion)
-        color_b = int(color_start[2] + (color_end[2] - color_start[2]) * completion)
-        color_hex = f"{color_r:02x}{color_g:02x}{color_b:02x}"
-
-        shields.append(
-            f"[![{year}](https://img.shields.io/badge/{year}-{stars}★-{color_hex}?style=flat-square)](https://adventofcode.com/{year})"
-        )
+        if int(stars):
+            completion = int(stars) / 50
+            color_start = (211, 211, 211)
+            color_end = (230, 203, 0)
+            color_r = int(color_start[0] + (color_end[0] - color_start[0]) * completion)
+            color_g = int(color_start[1] + (color_end[1] - color_start[1]) * completion)
+            color_b = int(color_start[2] + (color_end[2] - color_start[2]) * completion)
+            color_hex = f"{color_r:02x}{color_g:02x}{color_b:02x}"
+            shields.append(
+                f"[![{year}](https://img.shields.io/badge/{year}-{stars}★-{color_hex}?style=flat-square)](https://adventofcode.com/{year})"
+            )
     return " ".join(shields)
 
 
