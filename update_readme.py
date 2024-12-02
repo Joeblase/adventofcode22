@@ -1,25 +1,30 @@
+import os
 import re
-import json
+
 import requests
+from dotenv import load_dotenv
 
 
 def get_events():
-    with open("session_cookie.json") as f:
-        json_f = json.load(f)
-        session_cookie = json_f["SESSION_COOKIE"]
-    response = requests.get(f"https://adventofcode.com/events", cookies={'session': session_cookie})
+
+    load_dotenv()
+    session_cookie = os.environ["AOC_SESSION_COOKIE"]
+
+    response = requests.get(
+        f"https://adventofcode.com/events", cookies={"session": session_cookie}
+    )
     if response.ok:
         html = response.text
         html_lines = html.splitlines()
         event_list = []
         for line in html_lines:
-            if line[:29] == "<div class=\"eventlist-event\">":
-                year = re.search(r'\[(\d{4})]', line).group(1)
+            if line[:29] == '<div class="eventlist-event">':
+                year = re.search(r"\[(\d{4})]", line).group(1)
                 stars = re.search(r"(\d+)\*", line)
                 if stars:
                     stars = stars.group(1)
                 else:
-                    stars = '0'
+                    stars = "0"
                 event_list.append((year, stars))
         return event_list
     else:
@@ -42,14 +47,15 @@ def create_shields(events):
         color_hex = f"{color_r:02x}{color_g:02x}{color_b:02x}"
 
         shields.append(
-            f"[![{year}](https://img.shields.io/badge/{year}-{stars}★-{color_hex}?style=flat-square)](https://adventofcode.com/{year})")
-    return ' '.join(shields)
+            f"[![{year}](https://img.shields.io/badge/{year}-{stars}★-{color_hex}?style=flat-square)](https://adventofcode.com/{year})"
+        )
+    return " ".join(shields)
 
 
 def main():
     events = get_events()
     shields = create_shields(events)
-    with open('README.md', 'r', encoding='utf-8') as file:
+    with open("README.md", "r", encoding="utf-8") as file:
         readme = file.readlines()
 
     start_index = None
@@ -65,9 +71,9 @@ def main():
                 break
 
     if (start_index is not None) and (end_index is not None):
-        readme[start_index + 1:end_index] = shields + "\n"
+        readme[start_index + 1 : end_index] = shields + "\n"
 
-    with open('README.md', 'w', encoding='utf-8') as f:
+    with open("README.md", "w", encoding="utf-8") as f:
         f.writelines(readme)
 
 
