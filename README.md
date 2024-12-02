@@ -1,5 +1,7 @@
 # Advent of Code
 My Advent of Code solutions.
+
+## Stars
 <!-- SHIELDS_START --> 
 [![2024](https://img.shields.io/badge/2024-2★-d3d2ca?style=flat-square)](https://adventofcode.com/2024) [![2023](https://img.shields.io/badge/2023-16★-d9d08f?style=flat-square)](https://adventofcode.com/2023) [![2022](https://img.shields.io/badge/2022-22★-dbcf76?style=flat-square)](https://adventofcode.com/2022) [![2021](https://img.shields.io/badge/2021-0★-d3d3d3?style=flat-square)](https://adventofcode.com/2021) [![2020](https://img.shields.io/badge/2020-0★-d3d3d3?style=flat-square)](https://adventofcode.com/2020) [![2019](https://img.shields.io/badge/2019-0★-d3d3d3?style=flat-square)](https://adventofcode.com/2019) [![2018](https://img.shields.io/badge/2018-0★-d3d3d3?style=flat-square)](https://adventofcode.com/2018) [![2017](https://img.shields.io/badge/2017-0★-d3d3d3?style=flat-square)](https://adventofcode.com/2017) [![2016](https://img.shields.io/badge/2016-0★-d3d3d3?style=flat-square)](https://adventofcode.com/2016) [![2015](https://img.shields.io/badge/2015-9★-d6d1ad?style=flat-square)](https://adventofcode.com/2015)
 <!-- SHIELDS_END -->
@@ -7,15 +9,16 @@ My Advent of Code solutions.
 
 ## Scripts
 
+### setup.py
+Sets up the repository.
+
 ### create_day.py
-Creates a directory and files for a specified day and year, fetches the challenge input data (requires session cookie), and opens the corresponding webpage.
+Creates a directory and files for a specified day and year, fetches the challenge input data, and opens the corresponding webpage.
 
 Example Usage:\
 `python create_day.py --year 2023 --day 1`\
 `python create_day.py` (Uses current date and time)
 
 ### update_readme.py
-Updates the shields above (requires session cookie).
+Updates the star shields.
 
-### get_all_input_data.py
-Run after cloning repository to get all input data files (requires session cookie). 
