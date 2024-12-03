@@ -56,25 +56,18 @@ def main():
     shields = create_shields(events)
     readme_dir = "docs/README.md"
     with open(readme_dir, "r", encoding="utf-8") as file:
-        readme = file.readlines()
+        readme = file.read()
 
-    start_index = None
-    end_index = None
-    for i, line in enumerate(readme):
-        if "<!-- SHIELDS_START -->" in line:
-            start_index = i
-            if end_index is not None:
-                break
-        if "<!-- SHIELDS_END -->" in line:
-            end_index = i
-            if start_index is not None:
-                break
-
-    if (start_index is not None) and (end_index is not None):
-        readme[start_index + 1 : end_index] = shields + "\n"
-
-    with open(readme_dir, "w", encoding="utf-8") as f:
-        f.writelines(readme)
+    start = "<!-- SHIELDS_START -->"
+    end = "<!-- SHIELDS_END -->"
+    j = readme.index(start)
+    k = readme.index(end)
+    if j != -1:
+        new_readme = "".join((readme[: j + len(start)], shields, readme[k:]))
+        with open(readme_dir, "w", encoding="utf-8") as f:
+            f.write(new_readme)
+    else:
+        print("Could not find <!-- SHIELDS --> in readme")
 
 
 if __name__ == "__main__":
