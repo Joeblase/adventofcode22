@@ -10,7 +10,7 @@ import time
 
 def main():
     with open("input.txt", encoding="UTF-8") as input_file:
-        input = input_file.readlines()
+        input = input_file.read().splitlines()
 
     # Part 1:
     print(f"Part 1: ")
