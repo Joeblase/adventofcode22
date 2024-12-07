@@ -1,4 +1,4 @@
-# <img src="assets/favicon.png" alt="favicon" style="width:24px;"> adventofcode <br> <!-- SHIELDS_START -->[![2024](https://img.shields.io/badge/2024-10★-d6d1a8?style=flat-square)](https://adventofcode.com/2024) [![2023](https://img.shields.io/badge/2023-16★-d9d08f?style=flat-square)](https://adventofcode.com/2023) [![2022](https://img.shields.io/badge/2022-22★-dbcf76?style=flat-square)](https://adventofcode.com/2022) [![2015](https://img.shields.io/badge/2015-9★-d6d1ad?style=flat-square)](https://adventofcode.com/2015)<!-- SHIELDS_END -->
+# <img src="assets/favicon.png" alt="favicon" style="width:24px;"> adventofcode <br> <!-- SHIELDS_START -->[![2024](https://img.shields.io/badge/2024-13★-d7d09c?style=flat-square)](https://adventofcode.com/2024) [![2023](https://img.shields.io/badge/2023-16★-d9d08f?style=flat-square)](https://adventofcode.com/2023) [![2022](https://img.shields.io/badge/2022-22★-dbcf76?style=flat-square)](https://adventofcode.com/2022) [![2015](https://img.shields.io/badge/2015-9★-d6d1ad?style=flat-square)](https://adventofcode.com/2015)<!-- SHIELDS_END -->
 
 My Advent of Code solutions.
 
